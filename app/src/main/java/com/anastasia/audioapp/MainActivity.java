@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     Button button3;
     Button button4;
     Button button5;
+
+    Button stop;
     MediaPlayer mediaPlayer;
     int i = 0;
     @Override
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
         button5 = findViewById(R.id.button5);
+        stop = findViewById(R.id.stop);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
                 playMusic();
             }
         });
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                i = 5;
+                playMusic();
+            }
+        });
         
     }
 
@@ -73,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.eminemwithoutme);
             mediaPlayer.start();}
         else if (i ==1){
+            mediaPlayer.stop();
             mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.oshinokoidol);
             mediaPlayer.start();
         } else if (i == 2) {
@@ -81,9 +92,11 @@ public class MainActivity extends AppCompatActivity {
         } else if (i == 3) {
             mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.sadesmoothoperator);
             mediaPlayer.start();
-        } else {
+        } else if (i == 4){
             mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kflayhighenough);
             mediaPlayer.start();
+        } else {
+            mediaPlayer.stop();
         }
     }
 }

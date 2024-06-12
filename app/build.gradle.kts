@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.anastasia.audioapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.anastasia.audioapp"
