@@ -70,19 +70,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void playMusic() {
         if(i == 0){
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.EminemWithoutMe);
+            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.eminemwithoutme);
             mediaPlayer.start();}
         else if (i ==1){
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.OshinoKoIdol);
+            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.oshinokoidol);
             mediaPlayer.start();
         } else if (i == 2) {
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.TheChainsmokersParis);
+            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.thechainsmokersparis);
             mediaPlayer.start();
         } else if (i == 3) {
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.SadeSmoothOperator);
+            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.sadesmoothoperator);
             mediaPlayer.start();
         } else {
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.KFlayHighEnough);
+            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kflayhighenough);
             mediaPlayer.start();
         }
     }
