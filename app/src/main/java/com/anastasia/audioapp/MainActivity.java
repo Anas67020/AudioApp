@@ -9,16 +9,16 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
     Button button;
     Button button2;
     Button button3;
     Button button4;
     Button button5;
-
     Button stop;
+
     MediaPlayer mediaPlayer;
-    int i = 0;
+    int song = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,72 +31,73 @@ public class MainActivity extends AppCompatActivity {
         button5 = findViewById(R.id.button5);
         stop = findViewById(R.id.stop);
 
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = 0;
-                playMusic();
+                playMusic(R.raw.eminemwithoutme);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = 1;
-                playMusic();
-
+                playMusic(R.raw.oshinokoidol);
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = 2;
-                playMusic();
+                playMusic(R.raw.thechainsmokersparis);
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = 3;
-                playMusic();
+                playMusic(R.raw.sadesmoothoperator);
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = 4;
-                playMusic();
+                playMusic(R.raw.kflayhighenough);
             }
         });
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                i = 5;
-                playMusic();
+                stopMusic();
             }
         });
-        
     }
 
-    private void playMusic() {
-        if(i == 0){
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.eminemwithoutme);
-            mediaPlayer.start();}
-        else if (i ==1){
-            mediaPlayer.stop();
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.oshinokoidol);
-            mediaPlayer.start();
-        } else if (i == 2) {
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.thechainsmokersparis);
-            mediaPlayer.start();
-        } else if (i == 3) {
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.sadesmoothoperator);
-            mediaPlayer.start();
-        } else if (i == 4){
-            mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kflayhighenough);
-            mediaPlayer.start();
-        } else {
-            mediaPlayer.stop();
+    private void playMusic(int currentSong) {
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+            mediaPlayer.release();
+        }
+        mediaPlayer = MediaPlayer.create(MainActivity.this, currentSong);
+        song = currentSong;
+        mediaPlayer.start();
+    }
+
+    private void stopMusic() {
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        song = 0;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
         }
     }
 }
