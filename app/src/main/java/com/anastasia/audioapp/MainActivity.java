@@ -79,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
                 //stopt die Musik und den Mediaplayer
                 mediaPlayer.stop();
             }
-            //wenn die musik nicht länger gespielt werden soll wird die methode aufgerufen
-            //bsp: wenn eine andere Audio abgespielt werden soll
+            //Stellt sicher das der MediaPlayer immer zuerst gestoppt und freigegeben
+            // wird, bevor ein neuer MediaPlayer erstellt wird.
             mediaPlayer.release();
         }
         // Erstellt einen neuen MediaPlayer mit dem ausgewählten Lied
         mediaPlayer = MediaPlayer.create(MainActivity.this, currentSong);
-        // Setze das aktuelle Lied
+        // Setzt das aktuelle Lied
         song = currentSong;
         //startet die wiedergabe
         mediaPlayer.start();
@@ -97,7 +97,8 @@ public class MainActivity extends AppCompatActivity {
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.stop();
             }
-            // Setzt den MediaPlayer auf null, um anzuzeigen, dass er nicht existiert
+            //Stellt sicher das der MediaPlayer immer zuerst gestoppt und freigegeben
+            // wird, bevor ein neuer MediaPlayer erstellt wird.
             mediaPlayer.release();
             mediaPlayer = null;
         }
